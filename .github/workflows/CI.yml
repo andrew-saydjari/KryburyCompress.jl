@@ -1,5 +1,3 @@
-
-
 name: CI
 on:
   schedule:
@@ -13,19 +11,19 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.0'
+#           - '1.0'
           - '1'
-          - 'nightly'
+#           - 'nightly'
         os:
           - ubuntu-latest
-          - macOS-latest
-          - windows-latest
+#           - macOS-latest
+#           - windows-latest
         arch:
           - x64
-          - x86
-        exclude:
-          - os: macOS-latest
-            arch: x86
+#           - x86
+#         exclude:
+#           - os: macOS-latest
+#             arch: x86
 
     steps:
       - uses: actions/checkout@v2
