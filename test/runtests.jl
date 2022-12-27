@@ -1,6 +1,6 @@
 using KryburyCompress
-using Test
+using LinearAlgebra, KrylovKit, FITSIO, LowRankOps, Test
+using Random: seed!
 
-@testset "KryburyCompress.jl" begin
-    # Write your tests here.
-end
+include("diagWoodbury.jl")
+include("compress.jl")

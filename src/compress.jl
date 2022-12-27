@@ -23,12 +23,12 @@ function save(W::DiagWoodbury,fname::String)
     set_comment!(hdrA, "NAME", "diagonal component of Woodbury form")
     write(f,W.A,header=hdrA,name="A")
     
-    hdrV = FITSIO.default_header(out.V)
+    hdrV = FITSIO.default_header(W.V)
     hdrV["NAME"] = "V"
     set_comment!(hdrV, "NAME", "low-rank component of Woodbury form")
     write(f,W.V,header=hdrV,name="V")
     
-    hdrD = FITSIO.default_header(out.D)
+    hdrD = FITSIO.default_header(W.D)
     hdrD["NAME"] = "D"
     set_comment!(hdrD, "NAME", "best diagonal approximation")
     write(f,W.D,header=hdrD,name="D")

@@ -1,7 +1,7 @@
 module KryburyCompress
 
-    using LinearAlgebra, FITSIO
-    import Base: *, +, ==
+    using LinearAlgebra, KrylovKit, FITSIO, LowRankOps
+    import Base: *, +, ==, ≈
 
     export DiagWoodbury, save, read_krybury, kryburyCompress
 
