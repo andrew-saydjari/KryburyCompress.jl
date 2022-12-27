@@ -7,7 +7,7 @@
     V = randn(n_big,n_lit)
     W = DiagWoodbury(A,V)
     
-    fname = tempname()
+    fname = tempname()*".fits"
     save(W,fname)
     W1 = read_krybury(fname)
     @test W == W1
