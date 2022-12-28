@@ -5,7 +5,9 @@ function kryburyCompress(M::LowRankMultMat,dM::LowRankDiagMat,nfeat;nsub=2,tol=1
         krylovdim=2*nsub,
         ishermitian=true,
         issymmetric=true,
-        :LM);
+        :LM,
+        tol=tol
+    );
     Vmat = hcat(V[1:nsub]...)*Diagonal(sqrt.(λ[1:nsub]))
     true_diag = diag(dM)
     A = abs.(true_diag.-dropdims(sum(Vmat.^2,dims=2),dims=2))
