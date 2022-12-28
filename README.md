@@ -75,6 +75,8 @@ W = read_krybury(fname)
 
 Each of the fields from the `DiagWoodbury` object are saved as different extensions in the FITS file.
 
+<img width="0" src="https://visitor-badge.glitch.me/badge?page_id=andrew-saydjari.KryburyCompress.jl" />
+
 <!-- URLS -->
 [action-img]: https://github.com/andrew-saydjari/KryburyCompress.jl/workflows/CI/badge.svg
 [action-url]: https://github.com/andrew-saydjari/KryburyCompress.jl/actions
