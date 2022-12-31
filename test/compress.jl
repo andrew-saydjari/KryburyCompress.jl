@@ -38,7 +38,7 @@
     BMat = LowRankMultMat([Diagonal(A),V],Cii_precomp_mult,Cii_fxn_mult);
     BMatDiag = LowRankDiagMat([Diagonal(A),V],Cii_precomp_diag,Cii_diag_map);
     
-    out = kryburyCompress(BMat,BMatDiag,n_big)
+    # out = kryburyCompress(BMat,BMatDiag,n_big)
     
     fname = tempname()
     save(out,fname)
