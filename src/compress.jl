@@ -1,4 +1,21 @@
-function kryburyCompress(M::LowRankMultMat,dM::LowRankDiagMat,nfeat;nsub=2,tol=1e-12)
+"""
+    kryburyCompress(M::LowRankMultMat,dM::LowRankDiagMat,nfeat::Int;nsub=2,tol=1e-12) -> W
+
+Given a matrix M, finds an approximation M ≈ A + V*V' using Krylov methods to approximate M by `nsub` eigenvectors and assign the residual diagonal to A. To aid in speed, M is passed as a two objects of type `LowRankMultMat` and `LowRankDiagMat.`
+
+# Arguments:
+- `M`: LowRankMultMat representation of M
+- `dM`: LowRankDiagMat representation of M
+- `nfeat`: linear dimension of M (one side length)
+
+# Keywords:
+- `nsub`: number of eigenvectors in approximation of M
+- `tol`: tolerance of Krylov approximation
+
+# Outputs:
+- `W`: DiagWoodbury object that approximates M
+"""
+function kryburyCompress(M::LowRankMultMat,dM::LowRankDiagMat,nfeat::Int;nsub=2,tol=1e-12)
     λ, V, info = eigsolve(M,
         nfeat,
         nsub,
@@ -14,6 +31,15 @@ function kryburyCompress(M::LowRankMultMat,dM::LowRankDiagMat,nfeat;nsub=2,tol=1
     return DiagWoodbury(A,Vmat,true_diag)
 end
 
+"""
+    save(W::DiagWoodbury,fname::String)
+
+Writes DiagWoodbury type to a FITS file.
+
+# Arguments:
+- `W`: DiagWoodbury object to be saved
+- `fname`: name of FITS file to be written
+"""
 function save(W::DiagWoodbury,fname::String)
     if last(fname,5) == ".fits"
         fname = chop(fname,tail=5)
@@ -37,6 +63,17 @@ function save(W::DiagWoodbury,fname::String)
     close(f)
 end
 
+"""
+    read_krybury(fname::String) -> W
+
+Reads a DiagWoodbury type from a FITS file.
+
+# Arguments:
+- `fname`: name of FITS file to be read
+
+# Outputs:
+- `W`: DiagWoodbury object from file
+"""
 function read_krybury(fname::String)
     if last(fname,5) == ".fits"
         fname = chop(fname,tail=5)
