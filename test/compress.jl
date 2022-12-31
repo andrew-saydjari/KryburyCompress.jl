@@ -3,7 +3,7 @@
     n_big = 100
     n_lit = 2
     
-    A = 1e-4*abs.(randn(n_big))
+    A = 1e-5*abs.(randn(n_big))
     V = randn(n_big,n_lit)
     W = DiagWoodbury(A,V)
     
@@ -38,7 +38,7 @@
     BMat = LowRankMultMat([Diagonal(A),V],Cii_precomp_mult,Cii_fxn_mult);
     BMatDiag = LowRankDiagMat([Diagonal(A),V],Cii_precomp_diag,Cii_diag_map);
     
-    # out = kryburyCompress(BMat,BMatDiag,n_big)
+    out = kryburyCompress(BMat,BMatDiag,n_big)
     
     fname = tempname()
     save(out,fname)
