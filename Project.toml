@@ -13,7 +13,7 @@ LowRankOps = "0ea32739-31af-43e6-82ee-ebe6dcf00a6f"
 FITSIO = "0.17"
 KrylovKit = "0.6"
 LowRankOps = "0.1"
-julia = "1"
+julia = "1.6"
 
 [extras]
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
